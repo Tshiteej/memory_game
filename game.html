@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Picture Memory Game</title>
+    <link rel="icon" href="images/gamecontroller-512.png">
+    <link rel="stylesheet" type="text/css" href="game.css">
+</head>
+<body>
+<div class="wrap">
+
+    <div class="head">
+        <h1>Flip The Card</h1>
+    </div>
+
+    <div class="game"></div>
+
+    <div class="container">
+      <p id="result">60</p>
+      <p id="sec">sec</p>
+    </div>
+
+    <div class="container2">
+      <p id="number">0</p>
+      <p id="clicks">clicks</p>
+    </div>
+
+    <div class="main">
+     <button class="button-one start">Start</button>
+   </div>
+
+    <div class="modal-overlay">
+        <div class="modal">
+            <h2 class="winner">Yay!!You won!!</h2>
+            <button class="restart">Play Again?</button>
+        </div>
+    </div>
+
+
+    <div class="modal-overlay2">
+        <div class="modal2">
+            <h2 class="loser">Opps!!You lost!!</h2>
+            <button class="restart">Play Again?</button>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script src="jquery-3.2.1.min.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

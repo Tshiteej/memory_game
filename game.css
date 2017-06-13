@@ -1,0 +1,342 @@
+*{
+    box-sizing:border-box;
+}
+
+html,body{
+    height:100%;
+}
+
+body{
+    background:url(images/wood.jpg) no-repeat center center fixed;
+    background-size:cover;
+    min-height:100%;
+    font-family:"Arial",sans-serif;
+    overflow:hidden;
+}
+
+.head h1{
+  color:#ff3333;
+  font-size:40px;
+  text-align:center;
+}
+.wrap{
+    position:relative;
+    height:100%;
+    padding-bottom:20px;
+    animation:fadein 4s ease-in 0s;
+}
+
+@keyframes fadein{
+    from{
+        opacity:0;
+    }
+    to{
+        opacity:1;
+    }
+}
+
+.game{
+    transform-style: preserve-3d;
+    width:55%;
+    perspective:500px;
+    height:77%;
+    position:relative;
+    margin:0 auto;
+}
+
+@keyframes matchAnim{
+    0%{
+        background: #ffcccc;
+    }
+    100% {
+        background: white;
+    }
+}
+
+.card{
+    float:left;
+    width:25%;
+    height:25%;
+    padding:5px;
+    text-align:center;
+    display:block;
+    perspective:500px;
+    position:relative;
+    cursor:pointer;
+    z-index:50;
+    border-radius: 15px;
+}
+
+.card .inside {
+    width: 100%;
+    height: 100%;
+    display:block;
+    transform-style:preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: .4s ease-in-out;
+    transition: .4s ease-in-out;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px red;
+}
+
+.card .inside.picked, .card .inside.matched{
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.card .inside.matched {
+    -webkit-animation: 1s matchAnim ease-in-out;
+    animation:1s matchAnim ease-in-out;
+    -webkit-animation-delay: .4s;
+    animation-delay: .4s;
+}
+
+.card .front, .card .back{
+    -webkit-backface-visibility: hidden;
+    border: 1px solid black;
+    backface-visibility:hidden;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    padding:20%;
+    border-radius: 15px;
+}
+
+.card .front img {
+    max-width: 250%;
+    display:block;
+    margin:0 auto;
+    max-height:170%;
+}
+
+.card .back{
+  max-width: 250%;
+  display:block;
+  margin:0 auto;
+  max-height:170%;
+  background:url(images/card.jpg) no-repeat center;
+  background-size:cover;
+}
+.card .front {
+    transform:rotateY(-180deg);
+}
+
+.container {
+	position: absolute;
+  top:35%;
+  left:3%;
+	margin: 0 auto;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background: #3B3A3F;
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+}
+
+.container2{
+  position: absolute;
+  top:35%;
+  right:3%;
+	margin: 0 auto;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background: #3B3A3F;
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+}
+p {
+	margin: 0;
+	color: #ff4d4d;
+	font-weight: 700;
+}
+
+#result {
+	padding: 40px 0 0;
+	font-size: 80px;
+	line-height: 60px;
+}
+
+#number{
+  padding: 40px 0 0;
+	font-size: 80px;
+	line-height: 60px;
+}
+
+#sec {
+	font-size: 28px;
+}
+
+#clicks{
+  font-size: 28px;
+}
+
+.main{
+  position:absolute;
+  top:87%;
+  left:calc( 50% - 70px );
+  text-align:center;
+}
+
+.button-one {
+  font-size:20px;
+  padding:5px 50px;
+  outline: none;
+  background-color: #ff3333;
+  border: none;
+  border-radius:5px;
+  box-shadow: 0 9px #95a5a6;
+}
+
+.button-one:hover{
+  cursor:pointer;
+  background-color: #ff1a1a;
+}
+
+.button-one:active {
+  background-color: #ff1a1a;
+  box-shadow: 0 5px #95a5a6;
+  transform: translateY(4px);
+}
+
+.modal-overlay, .modal-overlay2{
+    display:none;
+    background:rgba(0,0,0, 0.8);
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+.modal, .modal2 {
+    display: none;
+    position: relative;
+    width: 500px;
+    height: 400px;
+    max-height: 90%;
+    max-width: 90%;
+    min-height: 380px;
+    margin: 0 auto;
+    background: white;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 30px 10px;
+}
+.modal .winner, .modal2 .loser {
+    font-size: 80px;
+    text-align: center;
+    font-family: "Anton", sans-serif;
+    color: #4d4d4d;
+    text-shadow: 0 3px 0 black;
+}
+
+.modal .restart , .modal2 .restart{
+    font-family: "Anton", sans-serif;
+    margin: 30px auto;
+    padding: 20px 30px;
+    display: block;
+    font-size: 30px;
+    background: #4d4d4d;
+    background: linear-gradient(#4d4d4d, #222);
+    border: 1px solid #222;
+    border-radius: 5px;
+    color: white;
+    text-shadow: 0 1px 0 black;
+    cursor: pointer;
+}
+.modal .restart, .modal2 .restart:hover {
+    background: linear-gradient(#222, black);
+}
+
+@media only screen and (max-width: 414px){
+  .game{
+    width:95%;
+    height:70%;
+  }
+  .container{
+    position:absolute;
+    top:80%;
+    left:0;
+    height:80px;
+    width:80px;
+  }
+  #result,#number{
+    padding:20px 0 0;
+    font-size:40px;
+    line-height:25px;
+  }
+  #sec,#clicks{
+    font-size: 20px;
+  }
+  .button-one{
+    padding:5px 20px;
+  }
+  .main{
+    position:absolute;
+    top:85%;
+    left:35%;
+  }
+  .container2{
+    position:absolute;
+    top:80%;
+    right:0;
+    height:80px;
+    width:80px;
+  }
+  .card .front img{
+    max-width: 120%;
+    max-height: 120%;
+  }
+  .card .back{
+    background:url(images/card.jpg) no-repeat center;
+  }
+  .modal .winner, .modal2 .loser {
+      font-size: 45px;
+  }
+}
+
+@media only screen and (max-width: 768px) and (min-width:415px){
+  .game{
+    width:95%;
+    height:70%;
+  }
+  .container{
+    position:absolute;
+    top:80%;
+    left:10%;
+    height:100px;
+    width:100px;
+  }
+  #result,#number{
+    padding:20px 0 0;
+    font-size:50px;
+    line-height:40px;
+  }
+  #sec,#clicks{
+    font-size: 25px;
+  }
+  .button-one{
+    padding:5px 30px;
+  }
+  .main{
+    position:absolute;
+    top:85%;
+    left:38%;
+  }
+  .container2{
+    position:absolute;
+    top:80%;
+    right:10%;
+    height:100px;
+    width:100px;
+  }
+  .card .front img{
+    max-width: 250%;
+    max-height: 150%;
+  }
+}

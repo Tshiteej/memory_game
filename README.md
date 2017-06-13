@@ -1,2 +1,2 @@
-# memory_game
-a memory game made of jquery
+# picture_memory_game
+ a picture memory game using jquery
